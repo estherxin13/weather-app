@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import Input from '@material-ui/core/Input';
 import { Divider, Grid } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
-import Image from './images/nature.png'; // Import using relative path
+import Image from './images/nature1.png'; // Import using relative path
 
 
 const api = {
