@@ -1,10 +1,9 @@
 import './App.css';
 import { React, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
-import Input from '@material-ui/core/Input';
 import { Divider, Grid } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
-import Image from './images/nature1.png'; // Import using relative path
+import Image from './images/nature1.png';
 
 
 const api = {
@@ -36,6 +35,7 @@ const useStyles = makeStyles(theme => ({
     paddingRight: theme.spacing(4),
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
+    borderRadius: 10,
   },
   location: {
     fontSize: 30,
@@ -57,7 +57,8 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center'
   },
   search: {
-    paddingTop: theme.spacing(2),
+    marginTop: theme.spacing(1),
+    padding: theme.spacing(2),
     width: '100%',
     height: 50,
     fontSize: 20,
@@ -131,7 +132,7 @@ function App() {
     <div className={classes.app}>
       <main className={classes.main}>
         <Box boxShadow={3} className={classes.card}>
-          <Input
+          <input
             variant="outlined"
             className={classes.search}
             onChange={e => setQuery(e.target.value)}
