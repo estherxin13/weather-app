@@ -1,8 +1,10 @@
 import './App.css';
 import { React, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
-// import Image from './images/forrest.png'; // Import using relative path
+import Image from './images/forrest.png'; // Import using relative path
 import Card from '@material-ui/core/Card';
+import Input from '@material-ui/core/Input';
+
 
 const api = {
   key: "8b1322f04ede553a7700d587b6619b96",
@@ -19,19 +21,26 @@ const useStyles = makeStyles(theme => ({
   },
   app: {
     // backgroundImage: `url(${Image})`,
-    backgroundColor: 'black',
+    // backgroundColor: 'black',
     // backgroundSize: 'cover',
     // backgroundPosition: 'top',
-    textAlign: 'center'
+    textAlign: 'center',
+    [theme.breakpoints.down('md')]: {
+      backgroundImage: 'none',
+      backgroundColor: 'black',
+    },
+    
   },
   main: {
     minHeight: '100vh',
     paddingTop: theme.spacing(10),
+
   },
   card: {
     width: 500,
     margin: 'auto',
     minHeight: 100,
+    padding: theme.spacing(5),
   },
   location: {
     margin: theme.spacing(5),
@@ -50,6 +59,15 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(5),
     fontSize: 18,
   },
+  search: {
+    paddingTop: theme.spacing(2),
+    width: '100%',
+    height: 50,
+    fontSize: 20,
+    outline: 'none',
+    display: 'block',
+    borderRadius: 6,
+  }
 
 }));
 
@@ -89,15 +107,19 @@ function App() {
     <div className={classes.app}>
       <main className={classes.main}>
         <Card className={classes.card}>
-          <input
-             className={classes.search}
+          {/* <div className={classes.title}>
+            Hey welcome to my weather app!
+          </div> */}
+          <Input
+            variant="outlined"
+            className={classes.search}
             onChange={e => setQuery(e.target.value)}
             value={query}
             onKeyPress={search}
             type="text"
             placeholder="search any city"
           />
-          {(typeof weather.main != "undefined") ? (
+          {(typeof weather.main != "undefined") && (
             <div className={classes.locationBox}>
               <div className={classes.location}><strong>{weather.name}, {weather.sys.country}</strong></div>
               <div className={classes.date}><strong>Date: </strong>{dateBuilder(new Date())}</div>
@@ -110,6 +132,7 @@ function App() {
               <div className={classes.temp}>
                 feels like: {weather.main.feels_like} °C
               </div>
+              {/* {weather.weather[0].main === "Rain" && <div>hey</div>} */}
               <div className={classes.temp}>
                 humidity: {weather.main.humidity} %
               </div>
@@ -117,7 +140,7 @@ function App() {
                 wind speed: {weather.wind.speed} km/h
               </div>
             </div>
-          ) : (<div>Please enter a city with correct spelling</div>)}
+          )}
         </Card>
       </main>
     </div>
