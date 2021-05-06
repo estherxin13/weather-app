@@ -25,11 +25,7 @@ const useStyles = makeStyles(theme => ({
     paddingTop: theme.spacing(4),
   },
   app: {
-    backgroundImage: `url(${Image})`,
-    [theme.breakpoints.down('md')]: {
-      backgroundImage: 'none',
-    },
-    
+    backgroundImage: `url(${Image})`,   
   },
   card: {
     backgroundColor: 'white',
